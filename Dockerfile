@@ -12,7 +12,7 @@ RUN tar -C /usr/local -xzf go1.19.9.linux-amd64.tar.gz
 
 RUN rm -rf go1.19.9.linux-amd64.tar.gz
 
-RUN export PATH=$PATH:/usr/local/go/bin
+ENV PATH="${PATH}:/usr/local/go/bin"
 
 #
 CMD ["/bin/bash"]
