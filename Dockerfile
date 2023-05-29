@@ -1,10 +1,18 @@
-FROM ghcr.io/hiway-media/deb-imagemagick-libvips:latest as base
+FROM ghcr.io/hiway-media/deb-imagemagick-libvips:latest
 #
-FROM golang:1.19-bullseye
-#
-COPY --from=base /usr/local/lib /usr/local/lib
-COPY --from=base /usr/include/vips /usr/include/vips
-COPY --from=base /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu
+
+ENV GOLANG_VERSION 1.19.9
+
+RUN url='https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz'
+
+RUN wget url
+
+RUN tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz
+
+RUN rm -rf go${GOLANG_VERSION}.linux-amd64.tar.gz
+
+RUN export PATH=$PATH:/usr/local/go/bin
+
 #
 CMD ["/bin/bash"]
 #
