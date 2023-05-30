@@ -71,7 +71,9 @@ jobs:
         # Build image and push to registry
         - name: Build and push
           uses: docker/build-push-action@v4
-          with:
+          with:  
+            cache-from: type=registry,ref=user/app:buildcache
+            cache-to: type=registry,ref=user/app:buildcache,mode=max
             context: .
             file: ./Dockerfile
             platforms: linux/amd64
