@@ -1,4 +1,4 @@
-FROM ghcr.io/hiway-media/deb-imagemagick-libvips:latest
+FROM ghcr.io/hiway-media/deb-imagemagick-libvips:v1.0.1
 #
 
 ENV url='https://dl.google.com/go/go1.19.9.linux-amd64.tar.gz'
